@@ -22,6 +22,9 @@
     <!--    加粗的文本，css中设置样式时，会根据id来设置-->
     <b id = "myp">This text is bold</b>
 
+    <br/>
+    <b id = "nowSystem">是否鸿蒙</b>
+
     <!--    换行符-->
     <br/>
     <b id = "hei">100</b>
@@ -51,8 +54,36 @@
 
     <button type="button" onclick = "callNativeClick()">callNativeClick</button>
 
+    <br/><br/>
+    <button type="button" onclick = "callNativeClick()"></button>
+
+    <br/><br/>
+    <button type="button" onclick = "openRecommed()">打开推荐构车</button>
+
     <!--        定义各个方法-->
     <script type="text/javascript">
+
+
+    //鸿蒙到js
+    function changeStr(value1){
+        document.getElementById('myp').textContent = value1;
+    }
+
+
+    //判断是否是鸿蒙系统
+    function isHarmonyOS() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        return ua.includes('harmony')
+    }
+
+    //js到鸿蒙
+    function openRecommed(){
+        if (isHarmonyOS()) {
+      harmony.jumpClickMember(15,15);
+    } else {
+      alert("非鸿蒙")
+    }
+
 
     function jumpOtherWeb(){
        shareClick.postMessage(JSON.stringify({"shareStyle":"7","url":"https://www.baidu.com"}));
