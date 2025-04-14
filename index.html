@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<header>
+
+<title id = "title">Title of this page</title>
+
+<!--样式从File.css文件中获取-->
+<link rel="stylesheet" type="text/css" href="File.css">
+<!--样式改变适应手机屏幕大小-->
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<!--响应的方法从File.js文件中获取-->
+<!--<script type="text/javascript" src="File.js"></script>-->
+
+</header>
+
+<body>
+    // 防止 汉字在 APP 端乱码
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--    标签，css中设置样式时，会根据id来设置-->
+    <p id = "wql">This is my first try to write Html5 file.</p>
+    <br/>
+    <!--    加粗的文本，css中设置样式时，会根据id来设置-->
+    <b id = "myp">This text is bold</b>
+
+    <!--    换行符-->
+    <br/>
+    <b id = "hei">100</b>
+    <br/><br/><br/>
+
+    <!--    该按钮的目的是：点击后触发OC的方法-->
+    <button type="button" onclick = "shareClickA()">shareClick</button>
+    <br/><br/>
+
+    <button type="button" onclick = "callNativeClickAction()">callNative去登录</button>
+    <br/><br/>
+
+    <button type="button" onclick = "goLoginAction()">去登录</button>
+    <br/><br/>
+
+
+    <button type="button" onclick = "JSCallOCMethod2()">JSCallOCMethod2</button>
+    <br/><br/>
+
+    <button type="button" onclick = "jsCallOCReturnMethod()">jsCallOCReturnMethod </button>
+
+    <br/><br/>
+
+    <button type="button" onclick = "jumpOtherWeb()">打开webview2调用 </button>
+
+    <br/><br/>
+
+    <button type="button" onclick = "callNativeClick()">callNativeClick</button>
+
+    <!--        定义各个方法-->
+    <script type="text/javascript">
+
+    function jumpOtherWeb(){
+       shareClick.postMessage(JSON.stringify({"shareStyle":"7","url":"https://www.baidu.com"}));
+    }
+
+    // js 主动调用 oc  方法  ，function shareClick 这个名字无关，这个是JS 绑定的
+    function shareClickA(){
+      shareClick.postMessage({"shareStyle":"5","url":"https://www.baidu.com/s?wd=中国文旅市场逐渐升温&tn=baidutop10&rsv_idx=2&usm=1&ie=utf-8&rsv_pq=fe1dde530007dce7&oq=中国文旅市场逐渐升温&rsv_t=3583g2IPsTdBkkoUGBv0u7EtA1j6TeaC1gTWrhtYwcJcmAcERHhO5hCQH4mOk1P0nA&rqid=fe1dde530007dce7&rsf=f73beecc6d33cf75842812254b0fbf42_1_15_1&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811", "imgPath":"https://gimg3.baidu.com/rel/src=https%3A%2F%2Fgips0.baidu.com%2Fit%2Fu%3D3065186678%2C1383125692%26fm%3D3028%26app%3D3028%26f%3DPNG%26fmt%3Dauto%26q%3D75%26size%3Df1138_640&refer=http%3A%2F%2Fwww.baidu.com&app=2010&size=w560&n=0&g=0n&q=100&fmt=auto?sec=1682614800&t=c806f35a9f572dc50d610905f0d3a954", "title":"文旅", "content":"文旅升温",});
+
+              //  shareClick 是 oc 注册监听的方法
+//window.webkit.messageHandlers.shareClick.postMessage({"shareStyle":"5","url": "https://www.baidu.com/s?wd=中国文旅市场逐渐升温&tn=baidutop10&rsv_idx=2&usm=1&ie=utf-8&rsv_pq=fe1dde530007dce7&oq=中国文旅市场逐渐升温&rsv_t=3583g2IPsTdBkkoUGBv0u7EtA1j6TeaC1gTWrhtYwcJcmAcERHhO5hCQH4mOk1P0nA&rqid=fe1dde530007dce7&rsf=f73beecc6d33cf75842812254b0fbf42_1_15_1&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811", "imgPath":"https://gimg3.baidu.com/rel/src=https%3A%2F%2Fgips0.baidu.com%2Fit%2Fu%3D3065186678%2C1383125692%26fm%3D3028%26app%3D3028%26f%3DPNG%26fmt%3Dauto%26q%3D75%26size%3Df1138_640&refer=http%3A%2F%2Fwww.baidu.com&app=2010&size=w560&n=0&g=0n&q=100&fmt=auto?sec=1682614800&t=c806f35a9f572dc50d610905f0d3a954", "title":"文旅", "content":"文旅升温",});
+
+//window.webkit.messageHandlers.openSystemBrowser.postMessage({"url":"https://www.baidu.com/"});
+    }
+
+    function callNativeClickAction(){
+        const myMap = new Map();
+        myMap.set('optType', 6);
+        myMap.set('nativePage', 0);
+        const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+      callNative.postMessage({"jsonStr":jsonStr})
+    }
+
+    function goLoginAction(){
+        callNative.postMessage("e_login");
+    }
+
+    function callNativeClick(){
+        const myMap = new Map();
+        myMap.set('optType', 6);
+        myMap.set('nativePage', 0);
+        const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+
+        loadURL("haleyAction://callNative?jsonStr=" + jsonStr);
+    }
+
+        function loadURL(url) {
+            alert(url);
+            var iFrame;
+            iFrame = document.createElement("iframe");
+            iFrame.setAttribute("src", url);
+            iFrame.setAttribute("style", "display:none;");
+            iFrame.setAttribute("height", "0px");
+            iFrame.setAttribute("width", "0px");
+            iFrame.setAttribute("frameborder", "0");
+            document.body.appendChild(iFrame);
+            // 发起请求后这个iFrame就没用了，所以把它从dom上移除掉
+            iFrame.parentNode.removeChild(iFrame);
+            iFrame = null;
+        }
+
+    // js 主动调用 oc  方法  ，function JSCallOCMethod2 这个名字无关，这个是JS 绑定的
+    function JSCallOCMethod2(){
+       //  JSCallOCMethod2 是 oc 注册监听的方法window.webkit.messageHandlers.JSCallOCMethod2.postMessage({"key1":"value1","key2":"value2"});
+
+    }
+
+    //OC 主动调用的方法  接收从OC传过来的值，需要OC调用该方法，并传入值
+    function OCCallJSMethod(jsonString){
+        alert('js获取到的值'+'OCCallJSMethod:'+jsonString);
+    }
+
+    function setNavStatusHeight(statusHeight){
+        document.getElementById('hei').innerText = statusHeight
+    }
+
+    //OC 主动调用的方法   jsCallOCReturnJsonStringMethod 这个才是与 OC 交互的方法
+    function jsCallOCReturnMethod(){
+        //  js 获取 OC 接口返回值  有参数  123123123
+        let jsonString = window.prompt("jsCallOCReturnJsonStringMethod","123123123");
+
+        //  js 获取 OC 接口返回值  无参数
+        // let jsonString = window.prompt("jsCallOCReturnJsonStringMethod");
+        alert('js获取到的值:'+'jsCallOCReturnJsonStringMethod:'+jsonString);
+    }
+
+    </script>
+
+</body>
+</html>
