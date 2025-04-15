@@ -65,6 +65,9 @@
     <button type="button" onclick="shareToHarmony()">分享到鸿蒙</button>
 
     <br /><br />
+    <button type="button" onclick="callNativeBackHomeClick()">鸿蒙回首页</button>
+
+    <br /><br />
     <img src="https://g.autoimg.cn/@img/car3/cardfs/product/g32/M09/2F/30/800x0_autohomecar__ChxkPmdLUOqADfLEADBMgeH9e2w231.jpg"
         alt="图片描述">
 
@@ -144,6 +147,19 @@
             if (isHarmonyOS()) {
                 harmony.jumpClickMember(15, 15);
             } else {
+                // jumpClickMember(15,15)
+                alert("非鸿蒙")
+            }
+        }
+
+        function callNativeBackHomeClick(){
+            if (isHarmonyOS()) {
+                const myMap = new Map();
+                myMap.set('optType', 0);
+                myMap.set('nativePage', 0);
+                const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+                harmony.callNative(jsonStr)
+            }else {
                 // jumpClickMember(15,15)
                 alert("非鸿蒙")
             }
