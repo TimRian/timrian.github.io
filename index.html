@@ -77,7 +77,7 @@
 
         const obj = JSON.parse(jsonStr);
         const map = new Map(Object.entries(obj)); // 或者使用其他转换方法如 for...in 或 Object.keys()
-        if(map.includes("memberID")){
+        if(map.keys.includes("memberID")){
             document.getElementById('jsonStr').textContent = map['memberID'];
         }
  
