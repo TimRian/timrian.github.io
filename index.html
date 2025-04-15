@@ -88,6 +88,9 @@
             if (isJsonStr(jsonStr)) {
                 var aa = jsonStrToMap(jsonStr)
                 document.getElementById('jsonStr').textContent = "是map";
+                if(aa.has('nickName')){
+                    document.getElementById('jsonStr').textContent = aa.get('nickName')
+                }
             } else {
                 document.getElementById('jsonStr').textContent = "不是map"
             }
