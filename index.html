@@ -83,6 +83,19 @@
         //     document.getElementById('jsonStr').textContent = map.keys.length
         // }
 
+       // 解析JSON字符串为对象
+       const obj = JSON.parse(jsonStr);
+ 
+       // 创建Map并添加对象属性
+       const map = new Map();
+       for (const key in obj) {
+         if (obj.hasOwnProperty(key)) { // 确保属性是对象的自有属性
+           map.set(key, obj[key]);
+          }
+       }
+
+       document.getElementById('jsonStr').textContent = map['nickName'];
+
     }
 
 
