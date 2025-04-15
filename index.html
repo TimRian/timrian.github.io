@@ -75,14 +75,18 @@
     function changeJsonStr(jsonStr){
         // document.getElementById('jsonStr').textContent = jsonStr;
 
-        const obj = JSON.parse(jsonStr);
-        const map = new Map(Object.entries(obj)); // 或者使用其他转换方法如 for...in 或 Object.keys()
-        if(map.keys.includes("memberID")){
-            document.getElementById('jsonStr').textContent = map['memberID'];
-        }else{
-            document.getElementById('jsonStr').textContent = map.keys.length
-        }
+        // const obj = JSON.parse(jsonStr);
+        // const map = new Map(Object.entries(obj)); // 或者使用其他转换方法如 for...in 或 Object.keys()
+        // if(map.keys.includes("memberID")){
+        //     document.getElementById('jsonStr').textContent = map['memberID'];
+        // }else{
+        //     document.getElementById('jsonStr').textContent = map.keys.length
+        // }
  
+        if(jsonStr.keys.includes("memberID")){
+            document.getElementById('jsonStr').textContent = jsonStr['memberID'];
+        }
+
     }
 
 
