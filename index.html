@@ -62,6 +62,9 @@
     <button type="button" onclick="openRecommed()">打开推荐构车</button>
 
     <br /><br />
+    <button type="button" onclick="shareToHarmony()">分享到鸿蒙</button>
+
+    <br /><br />
     <img src="https://g.autoimg.cn/@img/car3/cardfs/product/g32/M09/2F/30/800x0_autohomecar__ChxkPmdLUOqADfLEADBMgeH9e2w231.jpg"
         alt="图片描述">
 
@@ -140,6 +143,15 @@
         function openRecommed() {
             if (isHarmonyOS()) {
                 harmony.jumpClickMember(15, 15);
+            } else {
+                // jumpClickMember(15,15)
+                alert("非鸿蒙")
+            }
+        }
+
+        function shareToHarmony(){
+            if (isHarmonyOS()) {
+                harmony.shareClick({ "shareStyle": "5", "url": "https://www.baidu.com/s?wd=中国文旅市场逐渐升温&tn=baidutop10&rsv_idx=2&usm=1&ie=utf-8&rsv_pq=fe1dde530007dce7&oq=中国文旅市场逐渐升温&rsv_t=3583g2IPsTdBkkoUGBv0u7EtA1j6TeaC1gTWrhtYwcJcmAcERHhO5hCQH4mOk1P0nA&rqid=fe1dde530007dce7&rsf=f73beecc6d33cf75842812254b0fbf42_1_15_1&rsv_dl=0_right_fyb_pchot_20811&sa=0_right_fyb_pchot_20811", "imgPath": "https://gimg3.baidu.com/rel/src=https%3A%2F%2Fgips0.baidu.com%2Fit%2Fu%3D3065186678%2C1383125692%26fm%3D3028%26app%3D3028%26f%3DPNG%26fmt%3Dauto%26q%3D75%26size%3Df1138_640&refer=http%3A%2F%2Fwww.baidu.com&app=2010&size=w560&n=0&g=0n&q=100&fmt=auto?sec=1682614800&t=c806f35a9f572dc50d610905f0d3a954", "title": "文旅", "content": "文旅升温", });
             } else {
                 // jumpClickMember(15,15)
                 alert("非鸿蒙")
