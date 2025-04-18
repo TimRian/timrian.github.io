@@ -86,6 +86,28 @@
             document.getElementById('myp').textContent = value1;
         }
 
+        //直销车加入改变isMiniProgram,添加复制链接
+        function changeShareWay(){
+              // title: string, content: string, url: string,
+                //  imgPath: string, shareStyle: string,topicId: string="",
+                // topicName: string="",isMiniProgram: string="0",
+                // appletInnerUrl: string="",imgCover: string="",
+                // sharePlatformType: string="",sharePosterUrl: string=""
+            harmony.shareClick("祥菱Q东安1.6L动力单排平板车-豪华型",
+                 "梦想开车，为梦想加速", 
+                 "https://finance.foton.com.cn/payingmember/buyCars/carDetails?directId=3",
+                 "https://obs-market-finance.obs.cn-north-1.myhuaweicloud.com/img_1698306682314",
+                 "4",
+                 "",
+                 "",
+                 "1",
+                 "pages/transit/index?url=https://finance.foton.com.cn/payingmember/buyCars/carDetails?directId=3&type=2&referralCode=888NMQTI",
+                 "",
+                 "",
+                 "");
+        }
+
+
         function changeJsonStr(jsonStr) {
             document.getElementById('jsonStr').textContent = jsonStr;
 
