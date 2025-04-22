@@ -80,6 +80,10 @@
     <button type="button" onclick="savePic()">H5直接复制链接(无UI)</button>
 
     <br /><br />
+    <button type="button" onclick="telAction()">H5直接打电话(无UI)</button>
+
+
+    <br /><br />
     <img src="https://g.autoimg.cn/@img/car3/cardfs/product/g32/M09/2F/30/800x0_autohomecar__ChxkPmdLUOqADfLEADBMgeH9e2w231.jpg"
         alt="图片描述">
 
@@ -280,6 +284,14 @@
             } else {
                 // jumpClickMember(15,15)
                 alert("非鸿蒙")
+            }
+        }
+
+        function telAction(){
+            if (isHarmonyOS()) {
+                harmony.openSystemBrowser("https://www.baidu.com/")
+            }else{
+                alert("非鸿蒙") 
             }
         }
 
