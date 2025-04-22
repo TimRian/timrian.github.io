@@ -82,6 +82,9 @@
     <br /><br />
     <button type="button" onclick="telAction()">H5直接打电话(无UI)</button>
 
+    <br /><br />
+    <button type="button" onclick="jumpClickMemberAction()">付费会员调转jumpClickMember</button>
+
 
     <br /><br />
     <img src="https://g.autoimg.cn/@img/car3/cardfs/product/g32/M09/2F/30/800x0_autohomecar__ChxkPmdLUOqADfLEADBMgeH9e2w231.jpg"
@@ -320,6 +323,15 @@
                 );
         
             } else {
+                // jumpClickMember(15,15)
+                alert("非鸿蒙")
+            }
+        }
+
+        function jumpClickMemberAction(){
+            if (isHarmonyOS()) {
+                harmony.jumpClickMember(10, 10) //黑卡卡券
+            }else {
                 // jumpClickMember(15,15)
                 alert("非鸿蒙")
             }
