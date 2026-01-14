@@ -43,6 +43,12 @@
     <button type="button" onclick="carListAction()">车辆列表（0，8）</button>
     <br /><br />
 
+    <button type="button" onclick="carHealthyAction()">车辆健康（0，14）</button>
+    <br /><br />
+
+    <button type="button" onclick="carBehaviorAction()">驾驶行为（0，15）</button>
+    <br /><br />
+
     <!--    该按钮的目的是：点击后触发OC的方法-->
     <button type="button" onclick="shareClickA()">shareClick</button>
     <br /><br />
@@ -256,6 +262,35 @@
                 alert("非鸿蒙")
             }
         }
+
+        //车辆健康
+        function carHealthyAction(){
+            if (isHarmonyOS()) {
+                const myMap = new Map();
+                myMap.set('optType', 0);
+                myMap.set('nativePage', 14);
+                const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+                harmony.callNative(jsonStr)
+            }else {
+                // jumpClickMember(15,15)
+                alert("非鸿蒙")
+            }
+        }
+
+        //驾驶行为
+        function carBehaviorAction(){
+            if (isHarmonyOS()) {
+                const myMap = new Map();
+                myMap.set('optType', 0);
+                myMap.set('nativePage', 15);
+                const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+                harmony.callNative(jsonStr)
+            }else {
+                // jumpClickMember(15,15)
+                alert("非鸿蒙")
+            }
+        }
+
 
         function callNativeHotActivityClick(){
             if (isHarmonyOS()) {
