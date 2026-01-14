@@ -49,7 +49,16 @@
     <button type="button" onclick="carBehaviorAction()">驾驶行为（0，15）</button>
     <br /><br />
 
-    <button type="button" onclick="postAction()">动态（0，16）</button>
+    <button type="button" onclick="postAction(16)">发动态（0，16）</button>
+    <br /><br />
+
+    <button type="button" onclick="postAction(17)">发视频（0，17）</button>
+    <br /><br />
+
+    <button type="button" onclick="postAction(18)">发文章（0，18）</button>
+    <br /><br />
+
+    <button type="button" onclick="postAction(19)">提问题（0，19）</button>
     <br /><br />
 
     <!--    该按钮的目的是：点击后触发OC的方法-->
@@ -286,6 +295,21 @@
                 const myMap = new Map();
                 myMap.set('optType', 0);
                 myMap.set('nativePage', 15);
+                const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+                harmony.callNative(jsonStr)
+            }else {
+                // jumpClickMember(15,15)
+                alert("非鸿蒙")
+            }
+        }
+
+
+        //发动态
+         function postAction(nativePage){
+            if (isHarmonyOS()) {
+                const myMap = new Map();
+                myMap.set('optType', 0);
+                myMap.set('nativePage', nativePage);
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
             }else {
