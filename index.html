@@ -40,7 +40,7 @@
     <button type="button" onclick="homeBouncePostAction()">发帖弹窗（0，3）</button>
     <br /><br />
 
-    <button type="button" onclick="carListAction()">车辆列表（0，7）</button>
+    <button type="button" onclick="carListAction()">车辆列表（0，8）</button>
     <br /><br />
 
     <!--    该按钮的目的是：点击后触发OC的方法-->
@@ -248,7 +248,7 @@
             if (isHarmonyOS()) {
                 const myMap = new Map();
                 myMap.set('optType', 0);
-                myMap.set('nativePage', 7);
+                myMap.set('nativePage', 8);
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
             }else {
