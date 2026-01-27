@@ -43,6 +43,9 @@
     <button type="button" onclick="carListAction()">车辆列表（0，8）</button>
     <br /><br />
 
+    <button type="button" onclick="carListAction('260115')">车辆列表（0，8, '260115'）</button>
+    <br /><br />
+
     <button type="button" onclick="carHealthyAction()">车辆健康（0，14）</button>
     <br /><br />
 
@@ -59,6 +62,18 @@
     <br /><br />
 
     <button type="button" onclick="postAction(19)">提问题（0，19）</button>
+    <br /><br />
+
+    <button type="button" onclick="postAction(16,'260115')">发动态（0，16,'260115'）</button>
+    <br /><br />
+
+    <button type="button" onclick="postAction(17,'260115')">发视频（0，17,'260115'）</button>
+    <br /><br />
+
+    <button type="button" onclick="postAction(18,'260115')">发文章（0，18,'260115'）</button>
+    <br /><br />
+
+    <button type="button" onclick="postAction(19,'260115')">提问题（0，19,'260115'）</button>
     <br /><br />
 
     <!--    该按钮的目的是：点击后触发OC的方法-->
@@ -262,11 +277,14 @@
         }
 
         //车辆列表
-        function carListAction(){
+        function carListAction(remark){
             if (isHarmonyOS()) {
                 const myMap = new Map();
                 myMap.set('optType', 0);
                 myMap.set('nativePage', 8);
+                if(remark.length>0){
+                    myMap.set('remark', remark);
+                }
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
             }else {
@@ -305,11 +323,14 @@
 
 
         //发动态
-         function postAction(nativePage){
+         function postAction(nativePage,remark){
             if (isHarmonyOS()) {
                 const myMap = new Map();
                 myMap.set('optType', 0);
                 myMap.set('nativePage', nativePage);
+                if(remark.length>0){
+                    myMap.set('remark', remark);
+                }
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
             }else {
