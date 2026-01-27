@@ -282,8 +282,8 @@
                 const myMap = new Map();
                 myMap.set('optType', 0);
                 myMap.set('nativePage', 8);
-                if(remark.length>0){
-                    myMap.set('remark', remark);
+                if (typeof remark === 'string' && remark.trim().length > 0) {
+                    myMap.set('remark', remark.trim());
                 }
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
@@ -328,8 +328,8 @@
                 const myMap = new Map();
                 myMap.set('optType', 0);
                 myMap.set('nativePage', nativePage);
-                if(remark.length>0){
-                    myMap.set('remark', remark);
+                if (typeof remark === 'string' && remark.trim().length > 0) {
+                    myMap.set('remark', remark.trim());
                 }
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
