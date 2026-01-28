@@ -284,6 +284,7 @@
                 myMap.set('nativePage', 8);
                 if (typeof remark === 'string' && remark.trim().length > 0) {
                     myMap.set('remark', remark.trim());
+                    myMap.set('remark2', 'vin') //vin 未认证
                 }
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
@@ -299,6 +300,7 @@
                 const myMap = new Map();
                 myMap.set('optType', 0);
                 myMap.set('nativePage', 14);
+                myMap.set('remark', 'vin') //已认证
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
             }else {
@@ -313,6 +315,7 @@
                 const myMap = new Map();
                 myMap.set('optType', 0);
                 myMap.set('nativePage', 15);
+                myMap.set('remark', 'vin') //已认证
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
             }else {
