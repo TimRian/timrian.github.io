@@ -76,6 +76,12 @@
     <button type="button" onclick="postAction(19,'260115')">提问题（0，19,'260115'）</button>
     <br /><br />
 
+    <button type="button" onclick="carEnergySavingGuidanceAction()">节能指导（0，20）</button>
+    <br /><br />
+
+    <button type="button" onclick="carDrivingSafetyAction()">驾驶安全（0，21）</button>
+    <br /><br />
+
     <!--    该按钮的目的是：点击后触发OC的方法-->
     <button type="button" onclick="shareClickA()">shareClick</button>
     <br /><br />
@@ -320,6 +326,34 @@
                 harmony.callNative(jsonStr)
             }else {
                 // jumpClickMember(15,15)
+                alert("非鸿蒙")
+            }
+        }
+
+        //节能指导 
+        function carEnergySavingGuidanceAction(){
+            if (isHarmonyOS()) {
+                const myMap = new Map();
+                myMap.set('optType', 0);
+                myMap.set('nativePage', 20);
+                myMap.set('remark', 'LVAV2AVB0ME152490') //已认证 LRDS6PTC1PT059305 //不支持的：LVAV2AVB0ME152490
+                const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+                harmony.callNative(jsonStr)
+            }else {
+                alert("非鸿蒙")
+            }
+        }
+
+        //驾驶安全
+        function carDrivingSafetyAction(){
+            if (isHarmonyOS()) {
+                const myMap = new Map();
+                myMap.set('optType', 0);
+                myMap.set('nativePage', 21);
+                myMap.set('remark', 'LVBV6PDB4KW086859') //已认证 LVBV6PDB4KW086859
+                const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+                harmony.callNative(jsonStr)
+            }else {
                 alert("非鸿蒙")
             }
         }
