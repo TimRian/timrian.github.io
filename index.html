@@ -82,6 +82,9 @@
     <button type="button" onclick="carDrivingSafetyAction()">驾驶安全（0，21）</button>
     <br /><br />
 
+    <button type="button" onclick="jumpToMyOrHisProfile()">跳转我的或他的主页（0，22）</button>
+    <br /><br />
+
     <!--    该按钮的目的是：点击后触发OC的方法-->
     <button type="button" onclick="shareClickA()">shareClick</button>
     <br /><br />
@@ -351,6 +354,20 @@
                 myMap.set('optType', 0);
                 myMap.set('nativePage', 21);
                 myMap.set('remark', 'LVBV6PDB4KW086859') //已认证 LVBV6PDB4KW086859
+                const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+                harmony.callNative(jsonStr)
+            }else {
+                alert("非鸿蒙")
+            }
+        }
+
+        //跳转我的或他的主页
+        function jumpToMyOrHisProfile(){
+            if (isHarmonyOS()) {
+                const myMap = new Map();
+                myMap.set('optType', 0);
+                myMap.set('nativePage', 2);
+                myMap.set('remark', '10591647') 
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
             }else {
