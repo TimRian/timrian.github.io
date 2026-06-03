@@ -97,6 +97,9 @@
     <button type="button" onclick="realConditionAction()">实时车况跳转(0，26)</button>
     <br /><br />
 
+    <button type="button" onclick="trajectoryQueryAction()">轨迹查询跳转(0，27)</button>
+    <br /><br />
+
     <!--    该按钮的目的是：点击后触发OC的方法-->
     <button type="button" onclick="shareClickA()">shareClick</button>
     <br /><br />
@@ -456,6 +459,21 @@
                 const myMap = new Map();
                 myMap.set('optType', 0);
                 myMap.set('nativePage', 26);
+                myMap.set('remark', 'LVBV6PDB4KW086859') 
+                const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+                harmony.callNative(jsonStr)
+            }else {
+                // jumpClickMember(15,15)
+                alert("非鸿蒙")
+            }
+        }
+
+        //跳转轨迹查询
+        function trajectoryQueryAction(){
+            if (isHarmonyOS()) {
+                const myMap = new Map();
+                myMap.set('optType', 0);
+                myMap.set('nativePage', 27);
                 myMap.set('remark', 'LVBV6PDB4KW086859') 
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
