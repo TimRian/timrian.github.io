@@ -88,6 +88,9 @@
     <button type="button" onclick="mallHomeTimerAction()">跳转商城首页倒计时（0，23）</button>
     <br /><br />
 
+    <button type="button" onclick="energyReportAction()">能耗报告跳转(0，24)</button>
+    <br /><br />
+
     <!--    该按钮的目的是：点击后触发OC的方法-->
     <button type="button" onclick="shareClickA()">shareClick</button>
     <br /><br />
@@ -386,6 +389,39 @@
                 myMap.set('optType', 0);
                 myMap.set('nativePage', 23);
                 myMap.set('remark', 'LVAV2AVB0ME152490') //已认证 LRDS6PTC1PT059305 //不支持的：LVAV2AVB0ME152490
+                const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+                harmony.callNative(jsonStr)
+            }else {
+                // jumpClickMember(15,15)
+                alert("非鸿蒙")
+            }
+        }
+
+        //能耗报告跳转
+        function energyReportAction(){
+            if (isHarmonyOS()) {
+                const myMap = new Map();
+                myMap.set('optType', 0);
+                myMap.set('nativePage', 24);
+
+                // dateType: number  //0默认显示周报   1 显示月报
+                // selectMonth: string //月    yyyy-MM
+                // weekStart: string // 周报的 开始时间   yyyy-MM-dd
+                // weekEnd: string  // 周报的 结束时间    yyyy-MM-dd
+
+                // vin:string //全码vin
+                // vehiclePower:string //动力类型
+                const remarkMap = new Map();
+                remarkMap.set('dateType', 0); //周报
+                remarkMap.set('selectMonth', '');
+                remarkMap.set('weekStart', '2026-05-22'); //周报开始日期
+                remarkMap.set('selectMonth', '2026-05-28'); ////周报结束日期
+                remarkMap.set('vehiclePower', '柴油')
+                remarkMap.set('vin', 'LVBV6PDB4KW086859')
+
+                const remarkStr = JSON.stringify(Object.fromEntries(remarkMap));
+                myMap.set('remark', remarkStr) 
+
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
             }else {
