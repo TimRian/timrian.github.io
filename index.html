@@ -107,6 +107,8 @@
 
     <button type="button" onclick="yuyueweibaoWithParamClickAction()">预约维保带参数(0，30)</button>
 
+    <button type="button" onclick="weibaorecordAction()">维保记录(0，31)</button>
+
     <!--    该按钮的目的是：点击后触发OC的方法-->
     <button type="button" onclick="shareClickA()">shareClick</button>
     <br /><br />
@@ -557,6 +559,21 @@
                 const remarkStr = JSON.stringify(Object.fromEntries(remarkMap));
                 myMap.set('remark', remarkStr) 
 
+                const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+                harmony.callNative(jsonStr)
+            }else {
+                // jumpClickMember(15,15)
+                alert("非鸿蒙")
+            }
+        }
+
+        //维保记录
+        function weibaorecordAction(){
+            if (isHarmonyOS()) {
+                const myMap = new Map();
+                myMap.set('optType', 0);
+                myMap.set('nativePage', 31);
+                myMap.set('remark', 'LVBV6PDB4KW086859') 
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
             }else {
