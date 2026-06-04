@@ -112,7 +112,8 @@
     <button type="button" onclick="weibaorecordAction()">维保记录(0，31)</button>
     <br /><br />
 
-    
+    <button type="button" onclick="serviceOrderListAction()">服务订单列表(0，32)</button>
+    <br /><br />
 
     <!--    该按钮的目的是：点击后触发OC的方法-->
     <button type="button" onclick="shareClickA()">shareClick</button>
@@ -579,6 +580,20 @@
                 myMap.set('optType', 0);
                 myMap.set('nativePage', 31);
                 myMap.set('remark', 'LVBV6PDB4KW086859') 
+                const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+                harmony.callNative(jsonStr)
+            }else {
+                // jumpClickMember(15,15)
+                alert("非鸿蒙")
+            }
+        }
+
+        //服务订单列表
+        function serviceOrderListAction(){
+            if (isHarmonyOS()) {
+                const myMap = new Map();
+                myMap.set('optType', 0);
+                myMap.set('nativePage', 32);
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
             }else {
