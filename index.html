@@ -103,6 +103,8 @@
     <button type="button" onclick="safeReportAction()">安全报告带参数跳转(0，28)</button>
     <br /><br />
 
+    <button type="button" onclick="serviceStationListAction()">服务站列表(0，29)</button>
+
     <!--    该按钮的目的是：点击后触发OC的方法-->
     <button type="button" onclick="shareClickA()">shareClick</button>
     <br /><br />
@@ -426,8 +428,8 @@
                 const remarkMap = new Map();
                 remarkMap.set('dateType', 0); //周报
                 remarkMap.set('selectMonth', '2026-05');
-                remarkMap.set('weekStart', '2026-05-22'); //周报开始日期
-                remarkMap.set('weekEnd', '2026-05-28'); ////周报结束日期
+                remarkMap.set('weekStart', '2026-05-25'); //周报开始日期
+                remarkMap.set('weekEnd', '2026-05-31'); ////周报结束日期
                 remarkMap.set('vin', 'LVBV6PDB4KW086859')
 
                 const remarkStr = JSON.stringify(Object.fromEntries(remarkMap));
@@ -504,13 +506,28 @@
                 const remarkMap = new Map();
                 remarkMap.set('dateType', 2); //月报
                 remarkMap.set('selectMonth', '2026-05');
-                remarkMap.set('weekStart', '2026-05-22'); //周报开始日期
-                remarkMap.set('weekEnd', '2026-05-28'); ////周报结束日期
+                remarkMap.set('weekStart', '2026-05-25'); //周报开始日期
+                remarkMap.set('weekEnd', '2026-05-31'); ////周报结束日期
                 remarkMap.set('vin', 'LVBV6PDB4KW086859')
 
                 const remarkStr = JSON.stringify(Object.fromEntries(remarkMap));
                 myMap.set('remark', remarkStr) 
 
+                const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+                harmony.callNative(jsonStr)
+            }else {
+                // jumpClickMember(15,15)
+                alert("非鸿蒙")
+            }
+        }
+
+        //服务站-列表
+        function serviceStationListAction(){
+            if (isHarmonyOS()) {
+                const myMap = new Map();
+                myMap.set('optType', 0);
+                myMap.set('nativePage', 29);
+                myMap.set('remark', 'LVBV6PDB4KW086859')
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
             }else {
