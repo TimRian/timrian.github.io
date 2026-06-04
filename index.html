@@ -427,7 +427,7 @@
                 remarkMap.set('dateType', 0); //周报
                 remarkMap.set('selectMonth', '');
                 remarkMap.set('weekStart', '2026-05-22'); //周报开始日期
-                remarkMap.set('selectMonth', '2026-05-28'); ////周报结束日期
+                remarkMap.set('weekEnd', '2026-05-28'); ////周报结束日期
                 remarkMap.set('vin', 'LVBV6PDB4KW086859')
 
                 const remarkStr = JSON.stringify(Object.fromEntries(remarkMap));
@@ -492,7 +492,7 @@
             if (isHarmonyOS()) {
                 const myMap = new Map();
                 myMap.set('optType', 0);
-                myMap.set('nativePage', 24);
+                myMap.set('nativePage', 28);
 
                 // dateType: number  //1显示周报   2 显示月报
                 // selectMonth: string //月    yyyy-MM
@@ -505,7 +505,7 @@
                 remarkMap.set('dateType', 2); //月报
                 remarkMap.set('selectMonth', '2026-05');
                 remarkMap.set('weekStart', ''); //周报开始日期
-                remarkMap.set('selectMonth', ''); ////周报结束日期
+                remarkMap.set('weekEnd', ''); ////周报结束日期
                 remarkMap.set('vin', 'LVBV6PDB4KW086859')
 
                 const remarkStr = JSON.stringify(Object.fromEntries(remarkMap));
