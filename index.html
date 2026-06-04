@@ -105,6 +105,8 @@
 
     <button type="button" onclick="serviceStationListAction()">服务站列表(0，29)</button>
 
+    <button type="button" onclick="yuyueweibaoWithParamClickAction()">预约维保带参数(0，30)</button>
+
     <!--    该按钮的目的是：点击后触发OC的方法-->
     <button type="button" onclick="shareClickA()">shareClick</button>
     <br /><br />
@@ -528,6 +530,33 @@
                 myMap.set('optType', 0);
                 myMap.set('nativePage', 29);
                 myMap.set('remark', 'LVBV6PDB4KW086859')
+                const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+                harmony.callNative(jsonStr)
+            }else {
+                // jumpClickMember(15,15)
+                alert("非鸿蒙")
+            }
+        }
+
+        //预约维保带参数
+        function yuyueweibaoWithParamClickAction(){
+            if (isHarmonyOS()) {
+                const myMap = new Map();
+                myMap.set('optType', 0);
+                myMap.set('nativePage', 30);
+
+//              serviceType: number  //服务类型 0:维修，1:保养，2:点检;
+//              bookTime: string  // 预定时间  yyyy-MM-dd hh-mm 例如:2026-06-10 14:00
+//              vin:string //全码vin（指的是车辆列表的allVin）
+               
+                const remarkMap = new Map();
+                remarkMap.set('serviceType', 1); //保养
+                remarkMap.set('bookTime', '2026-06-10 14:00'); //预定时间
+                remarkMap.set('vin', 'LVBV6PDB4KW086859')
+
+                const remarkStr = JSON.stringify(Object.fromEntries(remarkMap));
+                myMap.set('remark', remarkStr) 
+
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
             }else {
