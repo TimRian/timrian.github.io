@@ -561,6 +561,10 @@
                 remarkMap.set('serviceType', 1); //保养
                 remarkMap.set('bookTime', '2026-06-10 14:00'); //预定时间
                 remarkMap.set('vin', 'LVBV6PDB4KW086859')
+                remarkMap.set('stationName', '北京宏晔汽车销售服务有限公司') //服务商信息-服务站名称
+                remarkMap.set('storeId', '14300')  //服务商信息-服务站id
+                remarkMap.set('lat', '39.779499') //服务商信息-纬度
+                remarkMap.set('lon', '116.806193')//服务商信息-经度
 
                 const remarkStr = JSON.stringify(Object.fromEntries(remarkMap));
                 myMap.set('remark', remarkStr) 
