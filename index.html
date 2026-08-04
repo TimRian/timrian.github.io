@@ -115,6 +115,12 @@
     <button type="button" onclick="serviceOrderListAction()">服务订单列表(0，32)</button>
     <br /><br />
 
+    <button type="button" onclick="signResultAction()">安心签结果页(0，33)</button>
+    <br /><br />
+
+    <button type="button" onclick="maintenanceResultAction()">保养权益领取结果页(0，34)</button>
+    <br /><br />
+
     <!--    该按钮的目的是：点击后触发OC的方法-->
     <button type="button" onclick="shareClickA()">shareClick</button>
     <br /><br />
@@ -598,6 +604,36 @@
                 const myMap = new Map();
                 myMap.set('optType', 0);
                 myMap.set('nativePage', 32);
+                const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+                harmony.callNative(jsonStr)
+            }else {
+                // jumpClickMember(15,15)
+                alert("非鸿蒙")
+            }
+        }
+
+        //安心签结果页
+        function signResultAction(){
+            if (isHarmonyOS()) {
+                const myMap = new Map();
+                myMap.set('optType', 0);
+                myMap.set('nativePage', 33);
+                myMap.set('remark', '0') //"0":未认证 "1":已认证
+                const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+                harmony.callNative(jsonStr)
+            }else {
+                // jumpClickMember(15,15)
+                alert("非鸿蒙")
+            }
+        }
+
+        //保养权益领取结果页
+        function maintenanceResultAction(){
+            if (isHarmonyOS()) {
+                const myMap = new Map();
+                myMap.set('optType', 0);
+                myMap.set('nativePage', 34);
+                myMap.set('remark', '0') //"0":未认证 "1":已认证
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
             }else {
