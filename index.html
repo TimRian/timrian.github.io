@@ -642,6 +642,32 @@
             }
         }
 
+        onload = function () {
+            if (isHarmonyOS()) {
+                document.getElementById('nowSystem').textContent = "鸿蒙系统";
+            } else {
+                document.getElementById('nowSystem').textContent = "非鸿蒙系统";
+            }
+            setTimeout(function () {
+                changeShareLink()
+            }, 1000);
+        }
+
+        //注入分享链接
+        function changeShareLink(){
+            if (isHarmonyOS()) {
+                const myMap = new Map();
+                myMap.set('optType', 1);
+                myMap.set('remark', 'https://www.baidu.com') //分享链接
+                const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+                harmony.callNative(jsonStr)
+            }else {
+                // jumpClickMember(15,15)
+                alert("非鸿蒙")
+            }
+        }
+
+
         //发动态
          function postAction(nativePage,remark){
             if (isHarmonyOS()) {
