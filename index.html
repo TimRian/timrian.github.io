@@ -649,8 +649,13 @@
                 document.getElementById('nowSystem').textContent = "非鸿蒙系统";
             }
             setTimeout(function () {
+                shareBtnShow(4) //3:显示分享按钮 4:隐藏分享按钮
+            }, 300);
+            
+            setTimeout(function () {
+                shareBtnShow(3) //3:显示分享按钮 4:隐藏分享按钮
                 changeShareLink()
-            }, 1000);
+            }, 2000);
         }
 
         //注入分享链接
@@ -659,6 +664,18 @@
                 const myMap = new Map();
                 myMap.set('optType', 1);
                 myMap.set('remark', 'https://www.baidu.com') //分享链接
+                const jsonStr = JSON.stringify(Object.fromEntries(myMap));
+                harmony.callNative(jsonStr)
+            }else {
+                // jumpClickMember(15,15)
+                alert("非鸿蒙")
+            }
+        }
+
+        function shareBtnShow(isShow){
+            if (isHarmonyOS()) {
+                const myMap = new Map();
+                myMap.set('optType', isShow); //4:隐藏分享按钮 3:显示分享按钮
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
             }else {
