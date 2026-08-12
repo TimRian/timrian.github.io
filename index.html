@@ -648,14 +648,19 @@
             } else {
                 document.getElementById('nowSystem').textContent = "非鸿蒙系统";
             }
+
             setTimeout(function () {
-                shareBtnShow(4) //3:显示分享按钮 4:隐藏分享按钮
-            }, 300);
-            
-            setTimeout(function () {
-                shareBtnShow(3) //3:显示分享按钮 4:隐藏分享按钮
                 changeShareLink()
-            }, 2000);
+            }, 300);
+
+            // setTimeout(function () {
+            //     shareBtnShow(4) //3:显示分享按钮 4:隐藏分享按钮
+            // }, 300);
+            
+            // setTimeout(function () {
+            //     shareBtnShow(3) //3:显示分享按钮 4:隐藏分享按钮
+            //     changeShareLink()
+            // }, 2000);
         }
 
         //注入分享链接
