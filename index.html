@@ -618,7 +618,13 @@
                 const myMap = new Map();
                 myMap.set('optType', 0);
                 myMap.set('nativePage', 33);
-                myMap.set('remark', '0') //"0":未认证 "1":已认证
+
+                const remarkMap = new Map();
+                remarkMap.set('vin', 'LVBV3J0B3NW114960')
+                remarkMap.set('auth', '0') //"0":未认证 "1":已认证
+                const remarkStr = JSON.stringify(Object.fromEntries(remarkMap));
+                myMap.set('remark', remarkStr) 
+
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
             }else {
@@ -633,7 +639,13 @@
                 const myMap = new Map();
                 myMap.set('optType', 0);
                 myMap.set('nativePage', 34);
-                myMap.set('remark', '0') //"0":未认证 "1":已认证
+
+                const remarkMap = new Map();
+                remarkMap.set('vin', 'LVBV3J0B3NW114960')
+                remarkMap.set('auth', '0') //"0":未认证 "1":已认证
+                const remarkStr = JSON.stringify(Object.fromEntries(remarkMap));
+                myMap.set('remark', remarkStr) 
+                
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
             }else {
