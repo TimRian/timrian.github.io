@@ -621,7 +621,7 @@
 
                 const remarkMap = new Map();
                 remarkMap.set('vin', 'LVBV3J0B3NW114960')
-                remarkMap.set('auth', '0') //"0":未认证 "1":已认证
+                remarkMap.set('state', '0') //"0":未认证 "1":已认证
                 const remarkStr = JSON.stringify(Object.fromEntries(remarkMap));
                 myMap.set('remark', remarkStr) 
 
@@ -642,10 +642,10 @@
 
                 const remarkMap = new Map();
                 remarkMap.set('vin', 'LVBV3J0B3NW114960')
-                remarkMap.set('auth', '0') //"0":未认证 "1":已认证
+                remarkMap.set('state', '0') //"0":未认证 "1":已认证
                 const remarkStr = JSON.stringify(Object.fromEntries(remarkMap));
                 myMap.set('remark', remarkStr) 
-                
+
                 const jsonStr = JSON.stringify(Object.fromEntries(myMap));
                 harmony.callNative(jsonStr)
             }else {
